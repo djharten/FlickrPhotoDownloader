@@ -4,7 +4,7 @@ This is a script that will automatically download everything from a public album
 
 ## Installation
 
-Clone the repo from [here](https://github.com/djharten/FlickrPhotoDownloader.git).
+Clone the repo from [here](https://github.com/djharten/FlickrPhotoDownloader.git), or download the ZIP from [here](https://github.com/djharten/FlickrPhotoDownloader/archive/master.zip).
 
 Run ```pip install requirements.txt```
 
