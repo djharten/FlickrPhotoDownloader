@@ -1,16 +1,19 @@
-import os
+import requests
+import platform
+
+from requests.exceptions import HTTPError
 from sys import stdin
 
 from image_downloader import ImageDownloader
-import requests
-from requests.exceptions import HTTPError
+from chromedriver_finder import ChromedriverFinder
 
 
 def main():
     url = get_url()
-    pages = get_pages()
-    chromedriver_location = get_chromedriver_location()
-    downloader = ImageDownloader(url, pages, chromedriver_location)
+    os_type = get_os()
+    finder = ChromedriverFinder(os_type)
+    driver_loc = finder.find_chromedriver()
+    downloader = ImageDownloader(url, driver_loc)
     downloader.run()
 
 
@@ -36,33 +39,8 @@ def get_url():
     return url
 
 
-def get_pages():
-    while True:
-        print()
-        stdin.flush()
-        try:
-            pages = int(input("Enter the number of pages in the album: "))
-            if pages < 1:
-                print("Error. Must have at least 1 page!")
-            else:
-                break
-        except ValueError as val_err:
-            print("Error. Not a Number. Please try again. Error: " + str(val_err))
-    return pages
-
-
-def get_chromedriver_location():
-    while True:
-        print()
-        stdin.flush()
-        chromedriver_location = input("Enter the location of 'chromedriver.exe'(check the Readme for more info).\n"
-                                      "Note: If using windows put two backslashes instead of one"
-                                      "(i.e. 'C:\\\\chromedriver_win32\\\\chromedriver.exe'): ")
-        if os.path.exists(chromedriver_location):
-            break
-        else:
-            print("Error. Not a correct path to chromedriver. Please try again.")
-    return chromedriver_location
+def get_os():
+    return platform.system()
 
 
 main()
