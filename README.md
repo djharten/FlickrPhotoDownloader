@@ -6,7 +6,7 @@ This is a script that will automatically download everything from a public album
 
 Clone the repo from [here](https://github.com/djharten/FlickrPhotoDownloader.git), or download the ZIP from [here](https://github.com/djharten/FlickrPhotoDownloader/archive/master.zip).
 
-Run ```pip install requirements.txt```
+Run ```pip install -r requirements.txt```
 
 This script is written to be used with Google Chrome. You will need the Chrome WebDriver. Open Chrome and go to Menu -> Help -> About Google Chrome to find what version of Chrome you are on, then download the driver from [here](https://sites.google.com/a/chromium.org/chromedriver/downloads).
 
