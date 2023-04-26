@@ -7,8 +7,11 @@ from os import path
 class ChromedriverFinder:
 
     def __init__(self, os_type):
-        self.name = "chromedriver.exe"
         self.os_type = os_type
+        if self.os_type == "Windows":
+            self.name = "chromedriver.exe"
+        else:
+            self.name = "chromedriver"
 
     def find_chromedriver(self):
         drive_list = self.get_all_drives()
