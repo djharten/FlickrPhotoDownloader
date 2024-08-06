@@ -31,6 +31,7 @@ class ImageDownloader:
                 pic_url = self.__get_image_loc(save_url)
                 val = str(saved_page_count) + ".jpg"
                 urllib.request.urlretrieve(pic_url, val)
+                print("Saving " + pic_url + " as " + val, end = "\r")
                 saved_page_count += 1
 
     def __scroll_to_bottom(self):
