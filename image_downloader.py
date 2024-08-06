@@ -7,9 +7,11 @@ import urllib.request
 class ImageDownloader:
 
     def __init__(self, url, chromedriver_location):
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
         self.url = url
         self.chromedriver_location = chromedriver_location
-        self.driver = webdriver.Chrome(self.chromedriver_location)
+        self.driver = webdriver.Chrome(self.chromedriver_location, options=chrome_options)
 
     def run(self):
         saved_page_count = 1
